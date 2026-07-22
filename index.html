@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-Camera Depth Accuracy Dataset</title>
+<style>
+  :root{
+    --ink:#1a1a1a; --sub:#5c5c5c; --line:#e3e3e3; --bg:#fbfbf9; --accent:#2f4b3c;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Georgia',serif;color:var(--ink);background:var(--bg);line-height:1.6;}
+  .wrap{max-width:860px;margin:0 auto;padding:64px 24px 100px;}
+  h1{font-size:2.1rem;font-weight:600;text-align:center;margin:0 0 18px;letter-spacing:-.01em;}
+  .authors{text-align:center;font-size:1.05rem;color:var(--sub);margin-bottom:6px;}
+  .affil{text-align:center;font-size:.9rem;color:var(--sub);margin-bottom:28px;}
+  .links{display:flex;justify-content:center;gap:14px;margin-bottom:48px;font-family:Arial,sans-serif;}
+  .links a{padding:8px 18px;border:1px solid var(--ink);border-radius:20px;color:var(--ink);
+    text-decoration:none;font-size:.9rem;transition:.15s;}
+  .links a:hover{background:var(--ink);color:#fff;}
+  h2{font-size:1.2rem;text-transform:uppercase;letter-spacing:.08em;border-bottom:2px solid var(--accent);
+    padding-bottom:8px;margin:52px 0 20px;font-family:Arial,sans-serif;}
+  p{font-size:1.02rem;color:#333;}
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:8px;}
+  .gallery figure{margin:0;}
+  .gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:4px;background:#ddd;display:block;}
+  .gallery figcaption{font-family:Arial,sans-serif;font-size:.78rem;color:var(--sub);text-align:center;margin-top:5px;}
+  .datablock{background:#fff;border:1px solid var(--line);border-radius:10px;padding:24px;font-family:Arial,sans-serif;}
+  .datablock ul{margin:10px 0 18px;padding-left:20px;font-size:.92rem;color:#333;}
+  .download{display:inline-block;background:var(--accent);color:#fff;padding:11px 22px;border-radius:6px;
+    text-decoration:none;font-size:.92rem;}
+  .download:hover{opacity:.9;}
+  footer{text-align:center;color:#999;font-size:.8rem;margin-top:70px;font-family:Arial,sans-serif;}
+</style>
+</head>
+<body>
+<div class="wrap"> ARE DEPTH CAMERAS SUPER-ACCURATE FOR VISUAL-INSPECTION BASED PRECISION ENGINEERING TASKS ? - an empirical investigation</h1>
+  <div class="authors">Authors</div>
+  <div class="affil">VPLAB, IIT Madras</div>
+
+  <div class="links">
+    <a href="#data">Paper (PDF)</a>
+    <a href="https://github.com/Bhavisha-06/Depth_cameras">Code</a>
+    <a href="https://drive.google.com/drive/folders/15-CzbXx0VlFP6yrWqjRA4d3G3a6rgL9y?usp=sharing">Data</a>
+  </div>
+
+  <h2>Abstract</h2>
+  <p>
+    Benchmark RGB-D datasets are foundational to a multitude of Computer Vision (CV) tasks, including object recognition, semantic segmentation, and 3D structure estimation. While standard tasks often rely on the global structure of depth maps and are resilient to minor inaccuracies, applications requiring strict millimeter-scale fidelity, such as precise robotic grasping, close-range navigation, and clash detection in renovation planning, demand reliable structural constraints. This
+paper presents a rigorous empirical evaluation of the real-world
+macroscopic accuracy of three widely adopted depth sensing
+modalities (Orbbec Femto Mega, Orbbec Gemini 336, and Intel
+RealSense D435f). Crucially, we expose a significant vulnerability
+in state-of-the-art Metric Monocular Depth Estimation (MMDE)
+models, demonstrating how these algorithms predict surprisingly
+different metric depths when applied to RGB inputs from
+different hardware sensors capturing the exact same scene —
+a phenomenon we term Cross-Sensor Bias. Using physically
+constrained, point-wise tape-measured ground truth, we quantify
+hardware-level versus algorithmic depth estimation errors and
+highlight distinct systematic error typologies (such as mixed-
+pixel edge artifacts and material-dependent depth biases). Finally,
+to mitigate these cross-sensor measurement biases, we propose
+DepthCal, a computational, per-sensor scale-shift calibration
+pipeline, providing the metrically consistent and unbiased foun-
+dation necessary for deploying commercial depth hardware and
+MMDE models in precision visual tasks.</em>
+  </p>
+  
+  <h2>About the Data</h2>
+  <div class="aboutdata">
+  <p>The proposed benchmark is a multi-camera RGB-D dataset designed to evaluate the metric accuracy of commercial depth cameras and monocular metric depth estimation (MMDE) models under controlled real-world conditions.
+
+Unlike conventional RGB-D datasets that primarily support perception tasks such as segmentation or object detection, this dataset focuses on millimetre-level depth accuracy, enabling quantitative evaluation of structural fidelity.
+
+The dataset contains synchronized captures from multiple RGB-D cameras observing identical scenes together with physically measured ground-truth depth obtained using tape measurements.</p>
+  </div>
+
+
+    <h2>What This Data Can Be Used For</h2>
+  <ul class="plain">
+    <li>Benchmarking raw hardware accuracy of depth cameras against verified ground truth</li>
+    <li>Evaluating cross-sensor consistency of Metric Monocular Depth Estimation models</li>
+    <li>Developing/testing per-sensor calibration methods (e.g., DepthCal)</li>
+    <li>Precision applications: robotic grasping, close-range navigation, clash detection</li>
+  </ul>
+
+  
+   <h2>How We Used It</h2>
+  <div class="case">
+    <p>Example: an object at 1 metre, same RGB frame, run through five MDE models.</p>
+    <img src="assets/MDE_comparison.png" alt="MDE outputs comparison">
+    <p class="case-cap">Fig. — Raw metric depth predictions from five state-of-the-art MDE models for the same RGB image.</p>
+  </div>
+  <div class="case">
+    <p>Example: the same object at 1 metre captured directly by the three depth cameras.</p>
+    <img src="assets/cameras_comparison.png" alt="Depth camera raw comparison">
+    <p class="case-cap">Fig. — Even raw hardware depth (no MDE involved) shows differing noise patterns and value ranges across Femto, Gemini, and RealSense.</p>
+  </div>
+
+    <h2>Data Examples</h2>
+  <!-- <div class="gallery">
+    <figure><img src="assets/example1.png" alt="RGB example"><figcaption>Camera A — RGB</figcaption></figure>
+    <figure><img src="assets/example2.png" alt="Depth example"><figcaption>Camera A — 16-bit GT depth</figcaption></figure>
+    <figure><img src="assets/example3.png" alt="Overlay example"><figcaption>Hand-measured GT points overlay</figcaption></figure>
+  </div> -->
+
+  <h2 id="data">Dataset & Download</h2>
+  <div class="datablock">
+    <p>The full dataset includes, for each of the 3 cameras:</p>
+    <ul>
+      <li>RGB images (.png)</li>
+      <li>16-bit ground-truth depth maps (.png)</li>
+      <li>Hand-measured ground-truth distance of the objects</li>
+    </ul>
+    <a class="download" href="https://drive.google.com/drive/folders/15-CzbXx0VlFP6yrWqjRA4d3G3a6rgL9y?usp=sharing" download>Download Dataset</a>
+  </div>
+
+  <footer>© 2026 VP-Lab, IIT-Madras. Project page for ICVGIP submission.</footer>
+</div>
+</body>
+</html>
