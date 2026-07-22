@@ -10,7 +10,7 @@
   }
   *{box-sizing:border-box;}
   body{margin:0;font-family:'Georgia',serif;color:var(--ink);background:var(--bg);line-height:1.6;}
-  .wrap{max-width:860px;margin:0 auto;padding:64px 24px 100px;}
+  .wrap{max-width:1200px;margin:0 auto;padding:64px 24px 100px;}
   h1{font-size:2.1rem;font-weight:600;text-align:center;margin:0 0 18px;letter-spacing:-.01em;}
   .authors{text-align:center;font-size:1.05rem;color:var(--sub);margin-bottom:6px;}
   .affil{text-align:center;font-size:.9rem;color:var(--sub);margin-bottom:28px;}
@@ -31,10 +31,28 @@
     text-decoration:none;font-size:.92rem;}
   .download:hover{opacity:.9;}
   footer{text-align:center;color:#999;font-size:.8rem;margin-top:70px;font-family:Arial,sans-serif;}
+
+  .case img{
+    width:90%;
+    max-width:950px;
+    height:auto;
+    display:block;
+    margin:0 auto;
+    border-radius:8px;
+}
+
+.case-cap{
+    text-align:center;
+    font-size:0.9rem;
+    color:#666;
+    font-style:italic;
+    margin-top:10px;
+}
+
 </style>
 </head>
 <body>
-<div class="wrap"> ARE DEPTH CAMERAS SUPER-ACCURATE FOR VISUAL-INSPECTION BASED PRECISION ENGINEERING TASKS ? - an empirical investigation</h1>
+<div class="wrap"><h1> ARE DEPTH CAMERAS SUPER-ACCURATE FOR VISUAL-INSPECTION BASED PRECISION ENGINEERING TASKS ? - AN IMPERICAL INVESTIGATION</h1>
   <div class="authors">Authors</div>
   <div class="affil">VPLAB, IIT Madras</div>
 
@@ -69,11 +87,7 @@ MMDE models in precision visual tasks.</em>
   
   <h2>About the Data</h2>
   <div class="aboutdata">
-  <p>The proposed benchmark is a multi-camera RGB-D dataset designed to evaluate the metric accuracy of commercial depth cameras and monocular metric depth estimation (MMDE) models under controlled real-world conditions.
-
-Unlike conventional RGB-D datasets that primarily support perception tasks such as segmentation or object detection, this dataset focuses on millimetre-level depth accuracy, enabling quantitative evaluation of structural fidelity.
-
-The dataset contains synchronized captures from multiple RGB-D cameras observing identical scenes together with physically measured ground-truth depth obtained using tape measurements.</p>
+  <p>The dataset presented in this work consists of synchronized RGB and depth images captured using multiple commercial depth cameras under controlled real-world conditions. It was collected to systematically evaluate the metric accuracy of commercial depth cameras and state-of-the-art monocular metric depth estimation (MMDE) models. We are making this dataset publicly available to facilitate further research on depth estimation, sensor evaluation, and metric depth analysis.</p>
   </div>
 
 
@@ -88,12 +102,12 @@ The dataset contains synchronized captures from multiple RGB-D cameras observing
   
    <h2>How We Used It</h2>
   <div class="case">
-    <p>Example: an object at 1 metre, same RGB frame, run through five MDE models.</p>
+    <p><b>Example:</b> an object at 1 metre, same RGB frame, run through five MDE models.</p>
     <img src="assets/MDE_comparison.png" alt="MDE outputs comparison">
     <p class="case-cap">Fig. — Raw metric depth predictions from five state-of-the-art MDE models for the same RGB image.</p>
   </div>
   <div class="case">
-    <p>Example: the same object at 1 metre captured directly by the three depth cameras.</p>
+    <p><b>Example:</b> the same object at 1 metre captured directly by the three depth cameras.</p>
     <img src="assets/cameras_comparison.png" alt="Depth camera raw comparison">
     <p class="case-cap">Fig. — Even raw hardware depth (no MDE involved) shows differing noise patterns and value ranges across Femto, Gemini, and RealSense.</p>
   </div>
@@ -104,6 +118,8 @@ The dataset contains synchronized captures from multiple RGB-D cameras observing
     <figure><img src="assets/example2.png" alt="Depth example"><figcaption>Camera A — 16-bit GT depth</figcaption></figure>
     <figure><img src="assets/example3.png" alt="Overlay example"><figcaption>Hand-measured GT points overlay</figcaption></figure>
   </div> -->
+
+  <h2>Data Structure</h2>
 
   <h2 id="data">Dataset & Download</h2>
   <div class="datablock">
